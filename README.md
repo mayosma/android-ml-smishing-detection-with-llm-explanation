@@ -51,3 +51,5 @@ Classifier branches adapted from:
 - https://github.com/Vikaymaker/Phishing-URL-Detection-using-CNN
 
 - LLM: Qwen3-1.7B (Apache 2.0) via llama.cpp.
+
+© 2026 Mayosma. All rights reserved.
