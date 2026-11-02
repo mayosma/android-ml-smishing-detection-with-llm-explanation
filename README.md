@@ -7,6 +7,9 @@ SMS → Python preprocessing (Chaquopy) → TFLite model (LSTM text + CNN URL)
 → on-device LLM (Qwen3-1.7B, llama.cpp) → explanation in the UI.
 Everything runs offline on the device.
 
+<img width="323" height="709" alt="image14" src="https://github.com/user-attachments/assets/84f2a9d1-d092-4f06-b842-396f329d8500" />
+
+
 ## Layout
 
 - `data/`: dataset notes (raw data not committed)
