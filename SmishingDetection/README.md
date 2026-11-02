@@ -1,6 +1,6 @@
 # Android app
 
-The classifier (`_model.tflite`, `word_index.json`) is already in
+The classifier (`model.tflite`, `word_index.json`) is already in
 `../SmishingDetection/app/src/main/assets` and `../SmishingDetection/app/src/main/python`. The LLM is not in the repo because of its size, so
 you push it to the phone yourself.
 
