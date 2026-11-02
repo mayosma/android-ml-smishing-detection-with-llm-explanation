@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+.venv/
+.ipynb_checkpoints/
+
+# Large files and data
+*.gguf
+models/
+*.h5
+*.keras
+*.ckpt
+data/*.csv
+data/*.tsv
+
+# Android
+build/
+.gradle/
+.cxx/
+.externalNativeBuild/
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store

@@ -1,0 +1,569 @@
+<!-- Google Stitch AI was used to generate UI, which was further tweaked and
+modified with additional functions and implementations to meet desired functionality. -->
+
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#2f3034",
+                        "surface-variant": "#343539",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#930005",
+                        "surface-container-lowest": "#0d0e12",
+                        "outline": "#8e9379",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary-fixed-dim": "#ffb4aa",
+                        "on-surface": "#e3e2e7",
+                        "surface-container-low": "#1a1b1f",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#410001",
+                        "inverse-primary": "#506600",
+                        "primary-fixed-dim": "#abd600",
+                        "on-surface-variant": "#c4c9ac",
+                        "tertiary-container": "#ffdad5",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-container-highest": "#343539",
+                        "primary-fixed": "#c3f400",
+                        "on-tertiary-container": "#ca0a0f",
+                        "secondary-container": "#474746",
+                        "outline-variant": "#444933",
+                        "surface-container": "#1e1f23",
+                        "surface": "#121317",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "surface-dim": "#121317",
+                        "on-primary": "#283500",
+                        "error-container": "#93000a",
+                        "background": "#121317",
+                        "on-secondary": "#313030",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#690003",
+                        "surface-tint": "#abd600",
+                        "inverse-surface": "#e3e2e7",
+                        "surface-container-high": "#292a2e",
+                        "secondary": "#c8c6c5",
+                        "on-background": "#e3e2e7",
+                        "on-secondary-container": "#b7b5b4",
+                        "on-error": "#690005",
+                        "on-primary-container": "#556d00",
+                        "tertiary": "#ffffff",
+                        "surface-bright": "#38393d",
+                        "primary-container": "#c3f400",
+                        "on-secondary-fixed-variant": "#474746",
+                        "tertiary-fixed": "#ffdad5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "margin": "20px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "md": "24px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-sm": ["Manrope"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #000000;
+            color: #e3e2e7;
+        }
+        .technical-glow-green {
+            box-shadow: 0 4px 20px -5px rgba(171, 214, 0, 0.2);
+        }
+        .technical-glow-red {
+            box-shadow: 0 4px 20px -5px rgba(147, 0, 10, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-sm bg-black overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-5 h-16 bg-black fixed top-0 z-50 border-b border-zinc-900">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lime-400" data-icon="security">security</span>
+<h1 class="text-lg font-bold tracking-tighter text-lime-400 font-['Space_Grotesk'] uppercase tracking-widest text-xs">SMISH_SHIELD</h1>
+</div>
+<button class="active:opacity-70 scale-98 transition-all">
+<span class="material-symbols-outlined text-lime-400" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="pt-24 pb-12 px-margin max-w-md mx-auto space-y-xl">
+<!-- Header Section -->
+<section class="space-y-sm">
+<h2 class="font-headline-lg text-headline-lg text-primary">Detection History</h2>
+<p class="font-body-sm text-body-sm text-surface-variant">Reviewing intercepted communications for malicious signatures.</p>
+</section>
+
+<section class="space-y-sm">
+    <textarea id="messageInput" class="w-full bg-surface-container-low border border-zinc-800 rounded-lg p-sm text-on-surface font-body-sm" rows="3" placeholder="Paste a message to scan..."></textarea>
+    <button id="scanButton" onclick="onCheckMessage()" class="w-full py-3 bg-primary-fixed-dim text-on-primary-fixed rounded-full font-label-caps hover:brightness-110 transition-all active:scale-[0.98]">
+        SCAN MESSAGE
+    </button>
+</section>
+
+<!-- List View of Scan Results -->
+<div id="saved-list" class="flex flex-col gap-gutter">
+
+</div>
+<!-- System Status Footer -->
+<footer class="pt-xl border-t border-zinc-900/50 flex flex-col items-center gap-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim shadow-[0_0_8px_rgba(171,214,0,0.6)]"></span>
+<span class="font-label-caps text-zinc-500">SYSTEM VIGILANCE ACTIVE</span>
+</div>
+<p class="text-[10px] text-zinc-600 font-label-caps">LAST SCAN: 2 MINUTES AGO</p>
+</footer>
+</main>
+<!-- Visual Polish: Top Gradient -->
+<div class="fixed top-0 left-0 w-full h-32 bg-gradient-to-b from-primary-fixed/5 to-transparent pointer-events-none z-40"></div>
+
+<script>
+
+    let currentExplanationCard = null;
+
+
+    /* =========================
+       LOAD HISTORY
+       ========================= */
+
+    window.onload = refreshHistory;
+
+    function refreshHistory() {
+        try {
+            const raw = Android.loadHistory();
+
+            console.log("RAW HISTORY:", raw);
+
+            const history = JSON.parse(raw);
+
+            console.log("PARSED HISTORY:", history);
+
+            document.getElementById("saved-list").innerHTML = "";
+
+            history.forEach(item => {
+                addHistoryCard(item);
+            });
+
+        } catch (e) {
+            console.error("History error:", e);
+        }
+    }
+
+
+
+
+    /* =========================
+       EXTRACT URL
+       ========================= */
+
+    function extractUrlFromText(text) {
+        const urlMatch = text.match(/(https?:\/\/[^\s]+)/);
+        return urlMatch ? urlMatch[0] : "";
+    }
+
+
+    /* =========================
+       SCAN MESSAGE
+       ========================= */
+
+    function onCheckMessage() {
+
+        const text =
+            document.getElementById("messageInput").value.trim();
+
+        if (!text) {
+            return;
+        }
+
+        const url = extractUrlFromText(text);
+
+        try {
+
+            const resultJson =
+                Android.classifyMessage(text, url);
+
+            console.log("Classification result:", resultJson);
+
+            const result =
+                JSON.parse(resultJson);
+
+            console.log("Parsed result:", result);
+
+
+            /*
+             * Create a unique ID for this card.
+             */
+            const cardId =
+                "scan-" + Date.now();
+
+
+            /*
+             * Show the card immediately.
+             */
+            addHistoryCard({
+                id: cardId,
+                text: text,
+                hybridScore: result.hybrid,
+                urlScore: result.cnn,
+                textScore: result.lstm,
+                explanation: "Generating explanation..."
+            });
+
+
+            /*
+             * Generate explanation.
+             */
+            if (result.hybrid > 0.55) {
+
+                currentExplanationCard = cardId;
+
+                Android.explainMessage(
+                    text,
+                    result.hybrid,
+                    result.lstm,
+                    result.cnn
+                );
+
+            } else {
+
+                updateExplanation(
+                    cardId,
+                    "No significant risk detected — no explanation needed."
+                );
+
+            }
+
+
+            /*
+             * Clear input.
+             */
+            document.getElementById("messageInput").value = "";
+
+        } catch (e) {
+
+            console.error("Scan error:", e);
+
+            alert("Scan failed: " + e);
+
+        }
+    }
+
+
+    /* =========================
+       CREATE CARD
+       ========================= */
+
+    function addHistoryCard(item) {
+
+        const hybridPct =
+            Math.round(item.hybridScore * 100);
+
+        const textPct =
+            Math.round(item.textScore * 100);
+
+        const urlPct =
+            Math.round(item.urlScore * 100);
+
+
+        const isRisky =
+            hybridPct > 55;
+
+
+        const card =
+            document.createElement("article");
+
+
+        card.id =
+            "card-" + item.id;
+
+
+        card.className =
+            "bg-surface-container-low rounded-xl p-md border border-zinc-900 relative overflow-hidden " +
+            (isRisky
+                ? "technical-glow-red"
+                : "technical-glow-green");
+
+
+        card.innerHTML = `
+
+            <div class="absolute top-0 left-0 w-1 h-full ${
+                isRisky
+                    ? "bg-error-container"
+                    : "bg-primary-fixed-dim"
+            }"></div>
+
+
+            <!-- Header -->
+
+            <div class="flex items-center justify-between mb-md">
+
+                <span class="font-label-caps ${
+                    isRisky
+                        ? "text-error"
+                        : "text-primary-fixed-dim"
+                }">
+
+                    ${hybridPct}%
+                    ${isRisky ? "CRITICAL" : "LOW"}
+
+                </span>
+
+
+                <button
+                    onclick="deleteHistoryItem('${item.id}', this)"
+                    class="text-zinc-400 hover:text-red-400 text-lg">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+            <!-- Three Scores -->
+
+            <div class="grid grid-cols-3 gap-sm mb-md">
+
+
+                <div class="space-y-xs">
+
+                    <span class="font-label-caps text-[10px] text-error block">
+                        SMISHING
+                    </span>
+
+                    <div class="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
+
+                        <div
+                            class="h-full bg-error-container"
+                            style="width: ${hybridPct}%">
+                        </div>
+
+                    </div>
+
+                    <span class="font-label-caps text-[10px] text-on-surface-variant">
+                        ${hybridPct}%
+                    </span>
+
+                </div>
+
+
+                <div class="space-y-xs">
+
+                    <span class="font-label-caps text-[10px] text-orange-400 block">
+                        TEXT
+                    </span>
+
+                    <div class="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
+
+                        <div
+                            class="h-full bg-orange-400"
+                            style="width: ${textPct}%">
+                        </div>
+
+                    </div>
+
+                    <span class="font-label-caps text-[10px] text-on-surface-variant">
+                        ${textPct}%
+                    </span>
+
+                </div>
+
+
+                <div class="space-y-xs">
+
+                    <span class="font-label-caps text-[10px] text-orange-400 block">
+                        URL
+                    </span>
+
+                    <div class="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
+
+                        <div
+                            class="h-full bg-orange-400"
+                            style="width: ${urlPct}%">
+                        </div>
+
+                    </div>
+
+                    <span class="font-label-caps text-[10px] text-on-surface-variant">
+                        ${urlPct}%
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Message -->
+
+            <div class="mb-md bg-black/40 p-sm rounded-lg border border-zinc-800/50">
+
+                <span class="font-label-caps text-[10px] text-zinc-500 block mb-1">
+                    INTERCEPTED MESSAGE
+                </span>
+
+                <p class="font-body-sm text-on-surface italic">
+                    "${escapeHtml(item.text)}"
+                </p>
+
+            </div>
+
+
+            <!-- Explanation -->
+
+            <div>
+
+                <div class="flex items-center gap-2 mb-2">
+
+                    <span class="material-symbols-outlined text-error text-sm">
+                        report
+                    </span>
+
+                    <span class="font-label-caps text-label-caps text-error">
+                        THREAT ASSESSMENT
+                    </span>
+
+                </div>
+
+                <p
+                    id="explanation-${item.id}"
+                    class="font-body-sm text-on-surface-variant leading-relaxed whitespace-pre-line">
+                    ${escapeHtml(item.explanation)}
+                </p>
+
+            </div>
+
+        `;
+
+
+        document
+            .getElementById("saved-list")
+            .prepend(card);
+    }
+
+
+    /* =========================
+       DELETE
+       ========================= */
+
+    function deleteHistoryItem(id, button) {
+
+        /*
+         * Only delete from HistoryStore
+         * if this is a saved history item.
+         */
+
+        if (!id.startsWith("scan-")) {
+            Android.removeHistoryItem(id);
+        }
+
+        button
+            .closest("article")
+            .remove();
+    }
+
+
+    /* =========================
+       EXPLANATION
+       ========================= */
+
+    function displayExplanation(explanationText) {
+
+        if (!currentExplanationCard) {
+            return;
+        }
+
+        updateExplanation(
+            currentExplanationCard,
+            explanationText
+        );
+
+        currentExplanationCard = null;
+    }
+
+
+    function updateExplanation(id, explanation) {
+
+        const element =
+            document.getElementById("explanation-" + id);
+
+        if (element) {
+            element.innerText = explanation;
+        }
+    }
+
+
+    /* =========================
+       SMS AUTO SCAN
+       ========================= */
+
+    function autoFillAndScan(messageBody) {
+
+        document.getElementById("messageInput").value =
+            messageBody;
+
+        onCheckMessage();
+    }
+
+
+    /* =========================
+       HTML ESCAPING
+       ========================= */
+
+    function escapeHtml(text) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent =
+            text;
+
+        return div.innerHTML;
+    }
+
+</script>
+
+
+
+</body></html>
